@@ -8,6 +8,9 @@ This repository is part of bbrujas' [WAGMI](https://github.com/bbrujas).
 
 ## TODO
 
+> *@dev*: you can find **TODO** stuff [here](./TODO.md), thanks!
+
+**Code contribution** agreements and discussion live [here](./CONTRIBUTING.md).
 
 ## changelog
 
