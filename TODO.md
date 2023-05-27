@@ -10,3 +10,6 @@ unprioritised wishlist
 Content here should be presented in a comprehensible way. A nice and simple definition, no longer than two phrases should be enough to define the overall idea.
 
 Complex ideas could benefit of diagrams and examples to ease explanation, you are invited to use also **TheBlackBay**'s *devs-corner* at [discord](https://discord.gg/SrY5KuPxsr) for open discussion around them! Ahoy!
+
+1. ***tbb001*** - add resource to output TODO in html format.
+2. ***tbb002*** - add resource to output CONTRIBUTING in html format.
