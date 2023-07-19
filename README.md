@@ -41,6 +41,9 @@ Default details for config file are as follows:
 ```toml
 HOSTNAME="127.0.0.1"
 SERVICE_PORT=8080
+TOAD_ADDRESS_BSC='0x463e737d8f740395abf44f7aac2d9531d8d539e9'
+HTTP_PROVIDER_URL_BSC="https://api.bscscan.com/api"
+TOAD_FIRST_BLOCK_BSC=5193287
 ```
 
 where:
@@ -51,11 +54,10 @@ where:
 
 ### environment file
 
-The MS core does not require any specific encrypted environment secret. Any escret that needs to be included should be passed in the TOML format, as in the following example:
+*tnms* requires a [BSCSCAN](https://bscscan.com) API KEY defined in its environment file, as in the following example:
 
 ```toml
-MY_SECRET_STRING = "your secret string goes here"
-MY_SECRET_NUMBER = 12093289192
+ETHERSCAN_API_KEY_BSC="your_etherscan_api_key_goes_here"
 ```
 
 ### Dependencies
