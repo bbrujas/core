@@ -61,6 +61,8 @@ where:
 
 - HTTP_PROVIDER_URL_BSC is the bscscan API endpoint as per their [details](https://docs.bscscan.com/getting-started/endpoint-urls).
 
+- CHURCH_FIRST_BLOCK is the block when the toad.network church contract was deployed.
+
 ### environment file
 
 *tcms* requires a [BSCSCAN](https://bscscan.com) API KEY defined in its environment file, as in the following example:
