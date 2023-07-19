@@ -29,7 +29,7 @@ It services the following resources:
 
 ## relevant details
 
-The MS relies on two different files:
+*tnms* relies on two different files:
 
 - config file (`.config`): a TOML-like file with configuration details.
 - encrypted environment file (`.env.enc`): a TOML-like file with **sensible** information that requires more care when handling. Read more about it [here](#secure-your-environment).
@@ -51,6 +51,14 @@ where:
 - HOSTNAME will define the IP address (or hostname if you enable any form of naming resolution) your MS will be publised at.
 
 - PORT will specify which port your MS will be listening to.
+
+- SVC_ID is a string used to identify the MS
+
+- TOAD_ADDRESS_BSC is the BSCScan address of the toad.network ERC20 token address.
+
+- HTTP_PROVIDER_URL_BSC is the bscscan API endpoint as per their [details](https://docs.bscscan.com/getting-started/endpoint-urls).
+
+- TOAD_FIRST_BLOCK_BSC is the block when the toad.network ERC20 token contract was deployed.
 
 ### environment file
 
@@ -80,7 +88,7 @@ ETHERSCAN_API_KEY_BSC="your_etherscan_api_key_goes_here"
 
 ## HowToRunThis
 
-This MS can be run as follows:
+*tnms* can be run as follows:
 
 - Download and synchronise the repo:
 
@@ -94,17 +102,26 @@ git clone git@github.com:bbrujas/core.git
 cd core
 ```
 
+- Switch to the appropriate branch for *tnms*:
+
+```sh
+git checkout capability/tcms
+```
+
 - Should see the following structure:
 
 ```sh
 tree -a ./
 ./
 ├── routes
-│   ├── about.js
-│   ├── changelog.js
-│   └── readme.js
+│   ├── getAllTx.js
+│   ├── getPlayers.js
+│   ├── getWeeklyPlayers.js
+│   └── getWeeklyTx.js
 ├── utils
 │   ├── configEnv.js
+│   ├── dataProcessor.js
+│   ├── dateUtils.js
 │   └── secureEnv.js
 ├── .config
 ├── CHANGELOG.md
