@@ -18,6 +18,8 @@ This repository is part of bbrujas' [WAGMI](https://github.com/bbrujas).
 
 This repository defines a very simple MS coded in NodeJS.
 
+The current branch **capability/tnms**, code-name *tnms*, is a simple microservice used to extract onchain information from toad.network ERC20 token contract.
+
 It services the following resources:
 
 - **/getPlayers**: Returns a list with the addresses that have more than 3 interactions with *toad.network* token contract.
