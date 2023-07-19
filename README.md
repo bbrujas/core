@@ -18,15 +18,15 @@ This repository is part of bbrujas' [WAGMI](https://github.com/bbrujas).
 
 This repository defines a very simple MS coded in NodeJS.
 
-It services the following resources:
+The current branch **capability/ca**, code-name *ca*, is a simple implementation of current etherscan API resources, that could help, for instance, to request an EVM compatible chain whose HTTP JSON_RPC endpoints follow etherscan API definition.
 
-- **/about**: Returns a some information within MS package.json.
-- **/changelog**: Returns a comprehensive list of changes that applied to *core*.
-- **/readme**: Returns current MS readme file.
+> @dev: you can look for more details about the **etherscan** API [here](https://docs.etherscan.io/).
+
+*ca* services the free resources made available at any EVM compatible API swagger.
 
 ## relevant details
 
-The MS relies on two different files:
+"ca" relies on two different files:
 
 - config file (`.config`): a TOML-like file with configuration details.
 - encrypted environment file (`.env.enc`): a TOML-like file with **sensible** information that requires more care when handling. Read more about it [here](#secure-your-environment).
@@ -48,11 +48,10 @@ where:
 
 ### environment file
 
-The MS core does not require any specific encrypted environment secret. Any escret that needs to be included should be passed in the TOML format, as in the following example:
+*ca* requires an ETHERSCAN_API_KEY defined in its environment file, as in the following example:
 
 ```toml
-MY_SECRET_STRING = "your secret string goes here"
-MY_SECRET_NUMBER = 12093289192
+ETHERSCAN_API_KEY="your_etherscan_api_key_goes_here"
 ```
 
 ### Dependencies
@@ -89,6 +88,12 @@ git clone git@github.com:bbrujas/core.git
 cd core
 ```
 
+- switch to *ca* branch:
+
+```sh
+git checkout capability/ca
+```
+
 - Should see the following structure:
 
 ```sh
@@ -97,9 +102,26 @@ tree -a ./
 ├── routes
 │   ├── about.js
 │   ├── changelog.js
-│   └── readme.js
+│   ├── readme.js
+│   ├── getAccountBalance.js
+│   ├── getAccountInternalTX.js
+│   ├── getAccountMinedBlocks.js
+│   ├── getAccountNormalTX.js
+│   ├── getBlockByTimestamp.js
+│   ├── getBlockCountdown.js
+│   ├── getBlockRangeInternalTX.js
+│   ├── getBlockReward.js
+│   ├── getContractABI.js
+│   ├── getContractCreation.js
+│   ├── getContractSourceCode.js
+│   ├── getCurrentBlock.js
+│   ├── getInternalTX.js
+│   ├── getMondayBlock.js
+│   ├── getTransactionReceiptStatus.js
+│   └── getTransactionStatus.js
 ├── utils
 │   ├── configEnv.js
+│   ├── dateUtils.js
 │   └── secureEnv.js
 ├── .config
 ├── CHANGELOG.md
