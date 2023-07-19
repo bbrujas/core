@@ -1,17 +1,13 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 
-//Default endpoints (MS Information)
-const aboutRouter = require("./routes/about");
-const readmeRouter = require("./routes/readme");
-const changelogRouter = require("./routes/changelog");
-//MS logic
+const getPlayersRouter = require("./routes/getPlayers");
+const getWeeklyPlayersRouter = require("./routes/getWeeklyPlayers");
+const getAllTxRouter = require("./routes/getAllTx");
+const getWeeklyTxRouter = require("./routes/getWeeklyTx");
 
-//initialise logging
 const log4js = require("log4js");
-const log = log4js.getLogger("server-startup");
-
-// Initialize log
+const log = log4js.getLogger("tnms-startup");
 log4js.configure({
     appenders: {
         console: { type: "console" },
@@ -29,24 +25,26 @@ configFileDetails = require("./utils/configEnv.js").getConfigFile('./.config');
 try {
 
     global.env = secEnv.secureEnvironment(GENERATOR_ADDRESS);
+    API_KEY = global.env.ETHERSCAN_BSC;
 
     HOSTNAME = configFileDetails.HOSTNAME;
     PORT = configFileDetails.SERVICE_PORT;
+    HTTP_PROVIDER_URL = configFileDetails.HTTP_PROVIDER_URL_BSC;
+    FIRST_BLOCK = configFileDetails.TOAD_FIRST_BLOCK_BSC;
+    CONTRACT_ADDRESS = configFileDetails.TOAD_ADDRESS_BSC;
 
     const app = express();
-    app.use(express.static("client")); //include static content on folder ./client
 
     app.use(bodyParser.urlencoded({ extended: true }));
-
-    // Resources definition
     app.use(express.json());
-    app.use("/about", aboutRouter);
-    app.use("/readme", readmeRouter);
-    app.use("/changelog", changelogRouter);
 
-    // Start MS
+    app.use("/getPlayers", getPlayersRouter);
+    app.use("/getWeeklyPlayers", getWeeklyPlayersRouter);
+    app.use("/getAllTx", getAllTxRouter);
+    app.use("/getWeeklyTx", getWeeklyTxRouter);
+
     app.listen(PORT, HOSTNAME, () => {
-        log.info(`Server running at ${HOSTNAME}:${PORT}`)
+        log.info(`${SVC_ID} running at ${HOSTNAME}:${PORT}...`)
     })
 
 } catch (e) {
