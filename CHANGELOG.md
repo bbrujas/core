@@ -7,11 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-## [1.0.0] - 2023-05-26
+## [1.0.0] - 2023-07-19
 
 ### Added
 
-- Repository initialization
+- *ca* capabilities branch.
 
 ### Fixed
 
@@ -23,8 +23,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Removed
 
-- 
+- Unnecessary *client-side* elements and them related libraries.
 
 ## [0.0.1] - historical changes
 
+- **2023/07/19** - CA branch created.
 - **2023/05/26** - Repository creation.

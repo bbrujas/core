@@ -19,7 +19,7 @@ const getInternalTXRouter = require("./routes/getInternalTX");
 const getBlockRangeInternalTXRouter = require("./routes/getBlockRangeInternalTX");
 
 const log4js = require("log4js");
-const log = log4js.getLogger("server-startup");
+const log = log4js.getLogger("ca-startup");
 log4js.configure({
     appenders: {
         console: { type: "console" },

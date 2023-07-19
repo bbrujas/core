@@ -19,8 +19,9 @@ getBlockRangeInternalTX.get("/:startblock/:endblock", async (req, res) => {
     const startblock = req.params.startblock;
     const endblock = req.params.endblock;
 
-    res.url = PROVIDER + '?module=account&action=txlistinternal&startblock=' + startblock + '&endblock='
-        + endblock + '&sort=asc&apikey=' + API_KEY;
+    res.url = PROVIDER + '?module=account&action=txlistinternal&startblock=' + startblock
+        + '&endblock=' + endblock
+        + '&sort=asc&apikey=' + API_KEY;
 
     axios.get(res.url)
         .then(function (response) {
