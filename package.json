@@ -1,5 +1,5 @@
 {
-  "name": "core",
+  "name": "tcms",
   "description": "This repository is part of bbrujas' [WAGMI](https://github.com/bbrujas).",
   "version": "1.0.0",
   "main": "server.js",

@@ -20,9 +20,10 @@ This repository defines a very simple MS coded in NodeJS.
 
 It services the following resources:
 
-- **/about**: Returns a some information within MS package.json.
-- **/changelog**: Returns a comprehensive list of changes that applied to *core*.
-- **/readme**: Returns current MS readme file.
+- **/getPlayers**: Returns a list with the addresses that have more than 3 interactions with *toad.network church* contract.
+- **/getWeeklyPlayers**: Returns a list with the addresses that have more than 3 interactions with *toad.network church* contract on **current week**.
+- **/getAllPraises**: Returns a list of all the praises that have happened with *toad.network church* contract.
+- **/getWeeklyPraises**: Returns a list of all the praises that have happened with *toad.network church* contract on **current week**.
 
 ## relevant details
 

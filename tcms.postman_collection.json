@@ -1,0 +1,109 @@
+{
+	"info": {
+		"_postman_id": "f1876814-42e3-4359-aad3-5b76d3251ca5",
+		"name": "tcms",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "getPlayers",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"url": {
+					"raw": "{{tcms}}/getPlayers",
+					"host": [
+						"{{tcms}}"
+					],
+					"path": [
+						"getPlayers"
+					]
+				},
+				"description": "`http://{{ms-name}}/getPlayers`\n\nReturns the list of addresses that have interacted with toad.network church contract three times or more."
+			},
+			"response": []
+		},
+		{
+			"name": "getWeeklyPlayers",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"url": {
+					"raw": "{{tcms}}/getWeeklyPlayers",
+					"host": [
+						"{{tcms}}"
+					],
+					"path": [
+						"getWeeklyPlayers"
+					]
+				},
+				"description": "`http://{{ms-name}}/getWeeklyPlayers`\n\nReturns the list of addresses that have interacted with toad.network church contract three times or more SINCE last Monday."
+			},
+			"response": []
+		},
+		{
+			"name": "getAllPraises",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"url": {
+					"raw": "{{tcms}}/getAllPraises",
+					"host": [
+						"{{tcms}}"
+					],
+					"path": [
+						"getAllPraises"
+					]
+				},
+				"description": "`http://{{ms-name}}/getAllPraises`\n\nReturns the list of transactions interacting with toad.network church contract."
+			},
+			"response": []
+		},
+		{
+			"name": "getWeeklyPraises",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"url": {
+					"raw": "{{tcms}}/getWeeklyPraises",
+					"host": [
+						"{{tcms}}"
+					],
+					"path": [
+						"getWeeklyPraises"
+					]
+				},
+				"description": "`http://{{ms-name}}/getWeeklyPraises`\n\nReturns the list of interactions with toad.network church contract that have happened SINCE last Monday."
+			},
+			"response": []
+		}
+	]
+}
