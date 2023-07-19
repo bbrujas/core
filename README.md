@@ -18,6 +18,8 @@ This repository is part of bbrujas' [WAGMI](https://github.com/bbrujas).
 
 This repository defines a very simple MS coded in NodeJS.
 
+The current branch **capability/tcms**, code-name *tcms*, is a simple microservice used to extract onchain information from toad.network church contract.
+
 It services the following resources:
 
 - **/getPlayers**: Returns a list with the addresses that have more than 3 interactions with *toad.network church* contract.
@@ -27,7 +29,7 @@ It services the following resources:
 
 ## relevant details
 
-The MS relies on two different files:
+*tcms* relies on two different files:
 
 - config file (`.config`): a TOML-like file with configuration details.
 - encrypted environment file (`.env.enc`): a TOML-like file with **sensible** information that requires more care when handling. Read more about it [here](#secure-your-environment).
@@ -39,6 +41,10 @@ Default details for config file are as follows:
 ```toml
 HOSTNAME="127.0.0.1"
 SERVICE_PORT=8080
+SVC_ID="tcms"
+CHURCH_ADDRESS='0xBa1CEd604cc1c99b1d30BCdB6941da2c23caFC86'
+HTTP_PROVIDER_URL_BSC="https://api.bscscan.com/api"
+CHURCH_FIRST_BLOCK=6542468
 ```
 
 where:
@@ -52,8 +58,7 @@ where:
 The MS core does not require any specific encrypted environment secret. Any escret that needs to be included should be passed in the TOML format, as in the following example:
 
 ```toml
-MY_SECRET_STRING = "your secret string goes here"
-MY_SECRET_NUMBER = 12093289192
+ETHERSCAN_API_KEY_BSC='your_bscscan_api_key_goes_here'
 ```
 
 ### Dependencies
