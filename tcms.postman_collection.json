@@ -26,7 +26,7 @@
 						"getPlayers"
 					]
 				},
-				"description": "`http://{{ms-name}}/getPlayers`\n\nReturns the list of addresses that have interacted with toad.network church contract three times or more."
+				"description": "`http://127.0.0.1/getPlayers`\n\nReturns the list of addresses that have interacted with toad.network church contract three times or more."
 			},
 			"response": []
 		},
@@ -51,7 +51,7 @@
 						"getWeeklyPlayers"
 					]
 				},
-				"description": "`http://{{ms-name}}/getWeeklyPlayers`\n\nReturns the list of addresses that have interacted with toad.network church contract three times or more SINCE last Monday."
+				"description": "`http://127.0.0.1/getWeeklyPlayers`\n\nReturns the list of addresses that have interacted with toad.network church contract three times or more SINCE last Monday."
 			},
 			"response": []
 		},
@@ -76,7 +76,7 @@
 						"getAllPraises"
 					]
 				},
-				"description": "`http://{{ms-name}}/getAllPraises`\n\nReturns the list of transactions interacting with toad.network church contract."
+				"description": "`http://127.0.0.1/getAllPraises`\n\nReturns the list of transactions interacting with toad.network church contract."
 			},
 			"response": []
 		},
@@ -101,7 +101,7 @@
 						"getWeeklyPraises"
 					]
 				},
-				"description": "`http://{{ms-name}}/getWeeklyPraises`\n\nReturns the list of interactions with toad.network church contract that have happened SINCE last Monday."
+				"description": "`http://127.0.0.1/getWeeklyPraises`\n\nReturns the list of interactions with toad.network church contract that have happened SINCE last Monday."
 			},
 			"response": []
 		}

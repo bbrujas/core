@@ -27,6 +27,8 @@ It services the following resources:
 - **/getAllPraises**: Returns a list of all the praises that have happened with *toad.network church* contract.
 - **/getWeeklyPraises**: Returns a list of all the praises that have happened with *toad.network church* contract on **current week**.
 
+> @dev: there's an additional [tcms.postman_collection.json](./tcms.postman_collection.json) file that contains a PostMan collection set with the corresponding resources to test.
+
 ## relevant details
 
 *tcms* relies on two different files:
@@ -53,12 +55,18 @@ where:
 
 - PORT will specify which port your MS will be listening to.
 
+- SVC_ID is a string used to identify the MS
+
+- CHURCH_ADDRESS is the BSCScan address of the toad.network church address.
+
+- HTTP_PROVIDER_URL_BSC is the bscscan API endpoint as per their [details](https://docs.bscscan.com/getting-started/endpoint-urls).
+
 ### environment file
 
-The MS core does not require any specific encrypted environment secret. Any escret that needs to be included should be passed in the TOML format, as in the following example:
+*tcms* requires a [BSCSCAN](https://bscscan.com) API KEY defined in its environment file, as in the following example:
 
 ```toml
-ETHERSCAN_API_KEY_BSC='your_bscscan_api_key_goes_here'
+ETHERSCAN_API_KEY_BSC="your_etherscan_api_key_goes_here"
 ```
 
 ### Dependencies
@@ -81,7 +89,7 @@ ETHERSCAN_API_KEY_BSC='your_bscscan_api_key_goes_here'
 
 ## HowToRunThis
 
-This MS can be run as follows:
+*tcms* can be run as follows:
 
 - Download and synchronise the repo:
 
@@ -101,11 +109,14 @@ cd core
 tree -a ./
 ./
 ├── routes
-│   ├── about.js
-│   ├── changelog.js
-│   └── readme.js
+│   ├── getAllPraises.js
+│   ├── getPlayers.js
+│   ├── getWeeklyPlayers.js
+│   └── getWeeklyPraises.js
 ├── utils
 │   ├── configEnv.js
+│   ├── dataProcessor.js
+│   ├── dateUtils.js
 │   └── secureEnv.js
 ├── .config
 ├── CHANGELOG.md
@@ -114,6 +125,7 @@ tree -a ./
 ├── package.json
 ├── README.md
 ├── server.js
+├── tcms.postman_collection.json
 └── TODO.md
 ```
 > @reader: if you cloned the repo, then you should also see git related artifacts, like *.git* folder and *.gitignore* file. 
