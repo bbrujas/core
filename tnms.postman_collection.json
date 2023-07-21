@@ -1,0 +1,109 @@
+{
+	"info": {
+		"_postman_id": "264e4dfb-0787-4a55-b05a-dfe3bc174368",
+		"name": "tnms",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "getPlayers",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"url": {
+					"raw": "{{tnms}}/getPlayers",
+					"host": [
+						"{{tnms}}"
+					],
+					"path": [
+						"getPlayers"
+					]
+				},
+				"description": "`http://127.0.0.1/getPlayers`\n\nReturns the list of addresses that have interacted with toad.network ERC20 token contract at any time."
+			},
+			"response": []
+		},
+		{
+			"name": "getWeeklyPlayers",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"url": {
+					"raw": "{{tnms}}/getWeeklyPlayers",
+					"host": [
+						"{{tnms}}"
+					],
+					"path": [
+						"getWeeklyPlayers"
+					]
+				},
+				"description": "`http://127.0.0.1/getWeeklyPlayers`\n\nReturns the list of addresses that have interacted with toad.network ERC20 token contract any time this week."
+			},
+			"response": []
+		},
+		{
+			"name": "getAllTx",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"url": {
+					"raw": "{{tnms}}/getAllTx",
+					"host": [
+						"{{tnms}}"
+					],
+					"path": [
+						"getAllTx"
+					]
+				},
+				"description": "`http://127.0.0.1/getAllTx`\n\nReturns the total number of transactions with toad.network ERC20 token contract since it was deployed."
+			},
+			"response": []
+		},
+		{
+			"name": "getWeeklyTx",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"url": {
+					"raw": "{{tnms}}/getWeeklyTx",
+					"host": [
+						"{{tnms}}"
+					],
+					"path": [
+						"getWeeklyTx"
+					]
+				},
+				"description": "`http://127.0.0.1/getWeekltTx`\n\nReturns the list of addresses that have interacted with toad.network ERC20 token contract since past Monday."
+			},
+			"response": []
+		}
+	]
+}

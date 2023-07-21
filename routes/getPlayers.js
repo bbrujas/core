@@ -26,9 +26,9 @@ getPlayersRoute.get("/", (req, res) => {
             '&startblock=' + FIRST_BLOCK +
             '&endblock=' + resCurrentBlock.data.result +
             '&sort=asc&apikey=' + API_KEY))
-        .then(resAllTx => {
-            req.leaderboard = require('../utils/dataProcessor').groupTransactions(resAllTx.data);
-            res.payload = req.leaderboard;
+        .then(resAllTx => require('../utils/dataProcessor').groupTransactions(resAllTx.data))
+        .then(resTxList => {
+            res.payload=resTxList;
         })
         .catch(error => {
             log.error(error);

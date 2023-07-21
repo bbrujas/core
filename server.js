@@ -29,6 +29,7 @@ try {
 
     HOSTNAME = configFileDetails.HOSTNAME;
     PORT = configFileDetails.SERVICE_PORT;
+    SVC_ID = configFileDetails.SVC_ID;
     HTTP_PROVIDER_URL = configFileDetails.HTTP_PROVIDER_URL_BSC;
     FIRST_BLOCK = configFileDetails.TOAD_FIRST_BLOCK_BSC;
     CONTRACT_ADDRESS = configFileDetails.TOAD_ADDRESS_BSC;

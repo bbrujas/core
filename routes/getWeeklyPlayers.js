@@ -19,7 +19,7 @@ getWeeklyPlayersRoute.get("/", (req, res) => {
 
     req.urlMondayBlock = HTTP_PROVIDER_URL +
         '?module=block&action=getblocknobytime&timestamp=' + Math.floor(require('../utils/dateUtils').getMonday().getTime() / 1000) +
-        '&closest=before&apikey=' + API_KEY
+        '&closest=before&apikey=' + API_KEY;
     req.urlCurrentBlock = HTTP_PROVIDER_URL +
         '?module=block&action=getblocknobytime&timestamp=' + Math.floor(Date.now() / 1000) +
         '&closest=before&apikey=' + API_KEY;
@@ -37,9 +37,9 @@ getWeeklyPlayersRoute.get("/", (req, res) => {
             '&sort=asc&apikey=' + API_KEY;
         })
         .then(response => axios.get(req.urlWeeklyTx))
-        .then(resWeeklyTx => {
-            req.leaderboard = require('../utils/dataProcessor').groupTransactions(resWeeklyTx.data);
-            res.payload = req.leaderboard;
+        .then(resWeeklyTx => require('../utils/dataProcessor').groupTransactions(resWeeklyTx.data))
+        .then(resLeaderboard => {
+            res.payload = resLeaderboard;
         })
         .catch(error => {
             log.error(error);
