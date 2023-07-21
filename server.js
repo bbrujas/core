@@ -25,7 +25,7 @@ configFileDetails = require("./utils/configEnv.js").getConfigFile('./.config');
 try {
 
     global.env = secEnv.secureEnvironment(GENERATOR_ADDRESS);
-    API_KEY = global.env.ETHERSCAN_BSC;
+    API_KEY = global.env.ETHERSCAN_API_KEY_BSC;
 
     HOSTNAME = configFileDetails.HOSTNAME;
     PORT = configFileDetails.SERVICE_PORT;
