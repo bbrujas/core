@@ -27,6 +27,8 @@ It services the following resources:
 - **/getAllTx**: Returns a list of all the transactions that have happened with *toad.network* token contract.
 - **/getWeeklyTx**: Returns a list of all the transactions that have happened with *toad.network* token contract on **current week**.
 
+> @dev: there's an additional [tnms.postman_collection.json](./tnms.postman_collection.json) file that contains a PostMan collection set with the corresponding resources to test.
+
 ## relevant details
 
 *tnms* relies on two different files:
