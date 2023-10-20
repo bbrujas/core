@@ -4,7 +4,7 @@ This repository is part of bbrujas' [WAGMI](https://github.com/bbrujas).
 
 - Main project [page](https://github.com/bbrujas).
 
-- Repository URL: [https://github.com/bbrujas/tcms](https://github.com/bbrujas/core)
+- Repository URL: [https://github.com/bbrujas/core](https://github.com/bbrujas/core)
 
 ## TODO
 
@@ -18,7 +18,7 @@ This repository is part of bbrujas' [WAGMI](https://github.com/bbrujas).
 
 This repository defines a very simple MS coded in NodeJS.
 
-The current branch **capability/coinmarketcap**, code-name *cmc*, is a simple microservice used to extract information from coinmarketCap site.
+The current branch **capability/cmc**, code-name *cmc*, is a simple microservice used to extract information from coinmarketCap site.
 
 It services the following resources:
 
