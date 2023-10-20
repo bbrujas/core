@@ -2,7 +2,7 @@ const express = require("express");
 const axios = require("axios");
 
 const log4js = require("log4js");
-const log = log4js.getLogger("getListings");
+const log = log4js.getLogger("getTransactionReceiptStatus");
 log4js.configure({
     appenders: {
         console: { type: "console" },
@@ -18,11 +18,7 @@ function filter(monitored, listing){
     var myResponse = [];
     var j = 0;
 
-    for (var i = 0; i < monitored.length; i++){
-
-        myMonitoredSet[monitored[i]] = true;
-
-    }
+    myMonitoredSet[monitored] = true;
 
     for (var index = 0; index < listing.length; ++index) {
 
@@ -30,10 +26,8 @@ function filter(monitored, listing){
 
         if (detail.symbol in myMonitoredSet) {
 
-            myResponse[j]=detail;
-            j++;
-
-            if (j == monitored.length) break
+            myResponse=detail.quote.USD.price;
+            break
 
         }
     }
@@ -41,9 +35,11 @@ function filter(monitored, listing){
     return myResponse
 }
 
-const getMonitored = express.Router();
+const getPriceUSD = express.Router();
 
-getMonitored.get("/", (req, res) => {
+getPriceUSD.get("/:symbol", async (req, res) => {
+
+    const symbol = req.params.symbol;
 
     res.url = PROVIDER+"/v1/cryptocurrency/listings/latest?start=1&limit=50&convert=USD";
 
@@ -57,7 +53,7 @@ getMonitored.get("/", (req, res) => {
             'X-CMC_PRO_API_KEY': API_KEY
             }
         }).then(function (response) {
-            res.payload = filter(COIN_LIST,response.data.data);
+            res.payload = filter(symbol,response.data.data);
             res.statusCode = response.status;
         }).catch(function (error) {
             log.error(error);
@@ -68,4 +64,4 @@ getMonitored.get("/", (req, res) => {
         });
 })
 
-module.exports = getMonitored
+module.exports = getPriceUSD

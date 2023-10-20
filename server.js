@@ -4,6 +4,7 @@ const bodyParser = require("body-parser");
 //MS logic
 const getListingsRouter = require("./routes/getListings");
 const getMonitoredRouter = require("./routes/getMonitored");
+const getPriceUSDRouter = require("./routes/getPriceUSD");
 
 //initialise logging
 const log4js = require("log4js");
@@ -42,6 +43,7 @@ try {
     app.use(express.json());
     app.use("/getListings", getListingsRouter);
     app.use("/getMonitored", getMonitoredRouter);
+    app.use("/getPriceUSD", getPriceUSDRouter);
 
     // Start MS
     app.listen(PORT, HOSTNAME, () => {
