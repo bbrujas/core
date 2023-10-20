@@ -26,9 +26,11 @@ getListings.get("/", (req, res) => {
             'Accept-Encoding': 'gzip, deflate',
             'Content-Type': 'application/json',
             'X-CMC_PRO_API_KEY': API_KEY
-        }
-     })
-        .catch(function (error) {
+            }
+        }).then(function (response) {
+            res.payload = response.data;
+            res.statusCode = response.status;
+        }).catch(function (error) {
             log.error(error);
             res.payload = error.message;
             res.statusCode = 503;
