@@ -1,10 +1,6 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 
-//Default endpoints (MS Information)
-const aboutRouter = require("./routes/about");
-const readmeRouter = require("./routes/readme");
-const changelogRouter = require("./routes/changelog");
 //MS logic
 const getListingsRouter = require("./routes/getListings");
 
@@ -30,20 +26,17 @@ configFileDetails = require("./utils/configEnv.js").getConfigFile('./.config');
 try {
 
     global.env = secEnv.secureEnvironment(GENERATOR_ADDRESS);
+    API_KEY = global.env.API_KEY;
 
     HOSTNAME = configFileDetails.HOSTNAME;
     PORT = configFileDetails.SERVICE_PORT;
 
     const app = express();
-    app.use(express.static("client")); //include static content on folder ./client
 
     app.use(bodyParser.urlencoded({ extended: true }));
 
     // Resources definition
     app.use(express.json());
-    app.use("/about", aboutRouter);
-    app.use("/readme", readmeRouter);
-    app.use("/changelog", changelogRouter);
     app.use("/getListings", getListingsRouter);
 
     // Start MS
