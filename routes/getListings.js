@@ -16,7 +16,7 @@ const getListings = express.Router();
 
 getListings.get("/", (req, res) => {
 
-    res.url = "https://pro-api.coinmarketcap.com/v1/cryptocurrency/listings/latest?start=1&limit=500&convert=USD";
+    res.url = PROVIDER+"/v1/cryptocurrency/listings/latest?start=1&limit=500&convert=USD";
 
     axios({
         url: res.url,

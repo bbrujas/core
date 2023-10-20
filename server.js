@@ -30,6 +30,7 @@ try {
 
     HOSTNAME = configFileDetails.HOSTNAME;
     PORT = configFileDetails.SERVICE_PORT;
+    PROVIDER = configFileDetails.PROVIDER;
 
     const app = express();
 

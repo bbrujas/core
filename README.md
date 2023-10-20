@@ -18,11 +18,13 @@ This repository is part of bbrujas' [WAGMI](https://github.com/bbrujas).
 
 This repository defines a very simple MS coded in NodeJS.
 
+The current branch **capability/coinmarketcap**, code-name *cmc*, is a simple microservice used to extract information from coinmarketCap site.
+
 It services the following resources:
 
-- **/about**: Returns a some information within MS package.json.
-- **/changelog**: Returns a comprehensive list of changes that applied to *core*.
-- **/readme**: Returns current MS readme file.
+- **/getListings**: Returns a list with the first 200 tokens listed, sort by market cap.
+
+> @dev: there's an additional [cmc.postman_collection.json](./cmc.postman_collection.json) file that contains a PostMan collection set with the corresponding resources to test.
 
 ## relevant details
 
@@ -48,11 +50,10 @@ where:
 
 ### environment file
 
-The MS core does not require any specific encrypted environment secret. Any escret that needs to be included should be passed in the TOML format, as in the following example:
+The MS core does not require any specific encrypted environment secret. Any secret that needs to be included should be passed in the TOML format, as in the following example:
 
 ```toml
-MY_SECRET_STRING = "your secret string goes here"
-MY_SECRET_NUMBER = 12093289192
+API_KEY = "your_coinmarketcap_api_key_goes_here"
 ```
 
 ### Dependencies
@@ -89,15 +90,19 @@ git clone git@github.com:bbrujas/core.git
 cd core
 ```
 
+- Switch to the corresponding branch:
+
+```sh
+git checkout capability/coinmarketcap
+```
+
 - Should see the following structure:
 
 ```sh
 tree -a ./
 ./
 ├── routes
-│   ├── about.js
-│   ├── changelog.js
-│   └── readme.js
+│   └── getListings.js
 ├── utils
 │   ├── configEnv.js
 │   └── secureEnv.js
@@ -170,5 +175,7 @@ Secure-env :  WARNING Make sure to delete ".env" for production use.
 - [NodeJS Routes](https://developer.mozilla.org/en-US/docs/Learn/Server-side/Express_Nodejs/routes).
 
 - [secure-env](https://github.com/kunalpanchal/secure-env).
+
+- [coinmarketcap-apis](https://coinmarketcap.com/api/documentation).
 
 # END
