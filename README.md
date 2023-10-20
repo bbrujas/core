@@ -22,7 +22,9 @@ The current branch **capability/cmc**, code-name *cmc*, is a simple microservice
 
 It services the following resources:
 
-- **/getListings**: Returns a list with the first 200 tokens listed, sort by market cap.
+- **/getListings**: Returns a list with the first 200 tokens listed, sorted by market cap.
+- **/getMonitored**: Returns a list with the tokens provided in the set of the config file, sorted by market cap.
+- **/getPriceUSD**: Returns the price in USD for the token symbol passed as parameter.
 
 > @dev: there's an additional [cmc.postman_collection.json](./cmc.postman_collection.json) file that contains a PostMan collection set with the corresponding resources to test.
 
@@ -40,6 +42,7 @@ Default details for config file are as follows:
 ```toml
 HOSTNAME="127.0.0.1"
 SERVICE_PORT=8080
+COIN_LIST=["BTC","ETH"]
 ```
 
 where:

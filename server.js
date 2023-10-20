@@ -3,6 +3,7 @@ const bodyParser = require("body-parser");
 
 //MS logic
 const getListingsRouter = require("./routes/getListings");
+const getMonitoredRouter = require("./routes/getMonitored");
 
 //initialise logging
 const log4js = require("log4js");
@@ -31,6 +32,7 @@ try {
     HOSTNAME = configFileDetails.HOSTNAME;
     PORT = configFileDetails.SERVICE_PORT;
     PROVIDER = configFileDetails.PROVIDER;
+    COIN_LIST = configFileDetails.COIN_LIST;
 
     const app = express();
 
@@ -39,6 +41,7 @@ try {
     // Resources definition
     app.use(express.json());
     app.use("/getListings", getListingsRouter);
+    app.use("/getMonitored", getMonitoredRouter);
 
     // Start MS
     app.listen(PORT, HOSTNAME, () => {
