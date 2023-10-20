@@ -6,6 +6,7 @@ const aboutRouter = require("./routes/about");
 const readmeRouter = require("./routes/readme");
 const changelogRouter = require("./routes/changelog");
 //MS logic
+const getListingsRouter = require("./routes/getListings");
 
 //initialise logging
 const log4js = require("log4js");
@@ -43,6 +44,7 @@ try {
     app.use("/about", aboutRouter);
     app.use("/readme", readmeRouter);
     app.use("/changelog", changelogRouter);
+    app.use("/getListings", getListingsRouter);
 
     // Start MS
     app.listen(PORT, HOSTNAME, () => {
