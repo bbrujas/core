@@ -70,7 +70,7 @@ getMap.get("/", (req, res) => {
             'X-CMC_PRO_API_KEY': API_KEY
         }
     })).then(responseQuote => {
-        res.payload = responseQuote.data;
+        res.payload = responseQuote.data.data;
         res.statusCode = responseQuote.status;
     }).catch(function (error) {
         log.error(error);
