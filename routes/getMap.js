@@ -32,8 +32,12 @@ function filter(monitored, listing){
 
         if (detail.symbol in myMonitoredSet) {
 
-            myResponse[j]=detail.id;
-            j++;
+            if (j < listing.length - 1){
+                myResponse+=detail.id+',';
+                j++;
+            }else {
+                myResponse+=detail.id
+            }
 
         }
     }
@@ -53,30 +57,28 @@ getMap.get("/", (req, res) => {
             'Accept-Encoding': 'gzip, deflate',
             'Content-Type': 'application/json',
             'X-CMC_PRO_API_KEY': API_KEY
-            }
-        }).then(responseMap => {
-            var responseFiltered = filter(COIN_LIST,responseMap.data.data);
-            res.urlQuote= PROVIDER+"/v1/cryptocurrency/quotes/latest?id="+responseFiltered
-            axios({
-                url:res.urlQuote,
-                method: 'get',
-                headers: {
-                    'Accept': 'application/json',
-                    'Accept-Encoding': 'gzip, deflate',
-                    'Content-Type': 'application/json',
-                    'X-CMC_PRO_API_KEY': API_KEY
-                }
-            }) 
-        }).then(responseQuote => {
-            res.payload = responseQuote;
-            //res.statusCode = responseQuote.status;
-        }).catch(function (error) {
-            log.error(error);
-            res.payload = error.message;
-            res.statusCode = 503;
-        }).finally(() => {
-            res.json(res.payload)
-        });
+        }
+    }).then( responseMap => {
+        req.urlQuotes=PROVIDER+"/v1/cryptocurrency/quotes/latest?id="+filter(COIN_LIST,responseMap.data.data);
+    }).then( response => axios({
+        url: req.urlQuotes,
+        method: 'get',
+        headers: {
+            'Accept': 'application/json',
+            'Accept-Encoding': 'gzip, deflate',
+            'Content-Type': 'application/json',
+            'X-CMC_PRO_API_KEY': API_KEY
+        }
+    })).then(responseQuote => {
+        res.payload = responseQuote.data;
+        res.statusCode = responseQuote.status;
+    }).catch(function (error) {
+        log.error(error);
+        res.payload = error.message;
+        res.statusCode = 503;
+    }).finally(() => {
+        res.json(res.payload)
+    });
 })
 
 module.exports = getMap

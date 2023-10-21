@@ -24,6 +24,7 @@ It services the following resources:
 
 - **/getListings**: Returns a list with the first 200 tokens listed, sorted by market cap.
 - **/getMonitored**: Returns a list with the tokens provided in the set of the config file, sorted by market cap.
+- **/getMap**: Returns a map with the more relevant details of the tokens specified in the config file.
 - **/getPriceUSD**: Returns the price in USD for the token symbol passed as parameter.
 
 > @dev: there's an additional [cmc.postman_collection.json](./cmc.postman_collection.json) file that contains a PostMan collection set with the corresponding resources to test.
@@ -105,7 +106,11 @@ git checkout capability/coinmarketcap
 tree -a ./
 ./
 ├── routes
-│   └── getListings.js
+│   ├── getListings.js
+│   ├── getMap.js
+│   ├── getMonitored.js
+│   ├── getPriceUSD.js
+│   └── getQuotes.js
 ├── utils
 │   ├── configEnv.js
 │   └── secureEnv.js
