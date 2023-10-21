@@ -17,7 +17,7 @@ const getMap = express.Router();
 function filter(monitored, listing){
 
     var myMonitoredSet = {};
-    var myResponse = {};
+    var myResponse = [];
     var j = 0;
 
     for (var i = 0; i < monitored.length; i++){
@@ -32,7 +32,7 @@ function filter(monitored, listing){
 
         if (detail.symbol in myMonitoredSet) {
 
-            myResponse[detail.symbol]=detail.id;
+            myResponse[j]=detail.id;
             j++;
 
         }
@@ -54,9 +54,22 @@ getMap.get("/", (req, res) => {
             'Content-Type': 'application/json',
             'X-CMC_PRO_API_KEY': API_KEY
             }
-        }).then(function (response) {
-            res.payload = filter(COIN_LIST,response.data.data);
-            res.statusCode = response.status;
+        }).then(responseMap => {
+            var responseFiltered = filter(COIN_LIST,responseMap.data.data);
+            res.url= PROVIDER+"/v1/cryptocurrency/quotes/latest?id="+responseFiltered
+            axios({
+                url:res.url,
+                method: 'get',
+                headers: {
+                    'Accept': 'application/json',
+                    'Accept-Encoding': 'gzip, deflate',
+                    'Content-Type': 'application/json',
+                    'X-CMC_PRO_API_KEY': API_KEY
+                }
+            })
+        }).then(responseQuote => {
+            res.payload = responseQuote;
+            //res.statusCode = responseQuote.status;
         }).catch(function (error) {
             log.error(error);
             res.payload = error.message;
