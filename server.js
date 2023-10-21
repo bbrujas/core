@@ -5,6 +5,9 @@ const bodyParser = require("body-parser");
 const getListingsRouter = require("./routes/getListings");
 const getMonitoredRouter = require("./routes/getMonitored");
 const getPriceUSDRouter = require("./routes/getPriceUSD");
+const getQuotesRouter = require("./routes/getQuotes");
+const getMapRouter = require("./routes/getMap");
+
 
 //initialise logging
 const log4js = require("log4js");
@@ -44,6 +47,8 @@ try {
     app.use("/getListings", getListingsRouter);
     app.use("/getMonitored", getMonitoredRouter);
     app.use("/getPriceUSD", getPriceUSDRouter);
+    app.use("/getQuotes", getQuotesRouter);
+    app.use("/getMap", getMapRouter);
 
     // Start MS
     app.listen(PORT, HOSTNAME, () => {

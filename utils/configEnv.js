@@ -1,6 +1,6 @@
 //initialise logging
 const log4js = require("log4js");
-const log = log4js.getLogger("hardhat-config");
+const log = log4js.getLogger("config");
 
 // Initialize log
 log4js.configure({
