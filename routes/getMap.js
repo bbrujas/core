@@ -43,10 +43,10 @@ function filter(monitored, listing){
 
 getMap.get("/", (req, res) => {
 
-    res.url = PROVIDER+"/v1/cryptocurrency/map?symbol="+COIN_LIST;
+    res.urlMapping = PROVIDER+"/v1/cryptocurrency/map?symbol="+COIN_LIST;
 
     axios({
-        url: res.url,
+        url: res.urlMapping,
         method: 'get',
         headers: {
             'Accept': 'application/json',
@@ -56,9 +56,9 @@ getMap.get("/", (req, res) => {
             }
         }).then(responseMap => {
             var responseFiltered = filter(COIN_LIST,responseMap.data.data);
-            res.url= PROVIDER+"/v1/cryptocurrency/quotes/latest?id="+responseFiltered
+            res.urlQuote= PROVIDER+"/v1/cryptocurrency/quotes/latest?id="+responseFiltered
             axios({
-                url:res.url,
+                url:res.urlQuote,
                 method: 'get',
                 headers: {
                     'Accept': 'application/json',
@@ -66,7 +66,7 @@ getMap.get("/", (req, res) => {
                     'Content-Type': 'application/json',
                     'X-CMC_PRO_API_KEY': API_KEY
                 }
-            })
+            }) 
         }).then(responseQuote => {
             res.payload = responseQuote;
             //res.statusCode = responseQuote.status;
