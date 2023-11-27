@@ -104,6 +104,7 @@ tree -a ./
 │   ├── changelog.js
 │   ├── readme.js
 │   ├── getAccountBalance.js
+│   ├── getAccountTokenBalance.js
 │   ├── getAccountInternalTX.js
 │   ├── getAccountMinedBlocks.js
 │   ├── getAccountNormalTX.js
