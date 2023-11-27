@@ -40,9 +40,9 @@ try {
     HOSTNAME = configFile.HOSTNAME;
     PORT = configFile.SERVICE_PORT;
     MS_ID = configFile.MS_ID;
-    PROVIDER = configFile.HTTP_PROVIDER_URL_BSC;
-    API_KEY = global.env.BSCSCAN_API_KEY;
-    RPC_PROVIDER = global.env.BSC_RPC_PROVIDER;
+    PROVIDER = configFile.HTTP_PROVIDER;
+    API_KEY = global.env.API_KEY;
+    RPC_PROVIDER = global.env.RPC_PROVIDER;
 
     const app = express();
 

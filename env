@@ -1,1 +1,2 @@
-ETHERSCAN_API_KEY="your_etherscan_api_key_goes_here"
+API_KEY='your_etherscan_api_key_goes_here
+RPC_PROVIDER='your_rpc_provider_goes_here'
