@@ -36,13 +36,19 @@ The MS relies on two different files:
 Default details for config file are as follows:
 
 ```toml
-HOSTNAME="127.0.0.1"
-SERVICE_PORT=8080
+ENC_ENV_PATH='.env.enc'
+HOSTNAME='localhost'
+MS_ID='dev-branch'
+PORT=8080
 ```
 
 where:
 
+- ENC_ENV_PATH is the path to your encrypted environment file. Read more about it [here](#secure-your-environment).
+
 - HOSTNAME will define the IP address (or hostname if you enable any form of naming resolution) your MS will be publised at.
+
+- MS_ID is the value you use to identify your MS instance.
 
 - PORT will specify which port your MS will be listening to.
 
