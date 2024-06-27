@@ -41,24 +41,28 @@ It services the following resources:
 Default details for config file are as follows:
 
 ```toml
-HOSTNAME="127.0.0.1"
-SERVICE_PORT=8080
+ENC_ENV_PATH='.env.enc'
+HOSTNAME='localhost'
+HTTP_PROVIDER = 'https://api.bscscan.com/api'
+MS_ID='tnms'
+PORT=8084
 TOAD_ADDRESS_BSC='0x463e737d8f740395abf44f7aac2d9531d8d539e9'
-HTTP_PROVIDER_URL_BSC="https://api.bscscan.com/api"
 TOAD_FIRST_BLOCK_BSC=5193287
 ```
 
 where:
 
+- ENC_ENV_PATH is the path to your encrypted environment file, read more [here](#secure-your-environment).
+
 - HOSTNAME will define the IP address (or hostname if you enable any form of naming resolution) your MS will be publised at.
+
+- HTTP_PROVIDER is the bscscan API endpoint as per their [details](https://docs.bscscan.com/getting-started/endpoint-urls).
+
+- MS_ID is a string used to identify the MS
 
 - PORT will specify which port your MS will be listening to.
 
-- SVC_ID is a string used to identify the MS
-
 - TOAD_ADDRESS_BSC is the BSCScan address of the toad.network ERC20 token address.
-
-- HTTP_PROVIDER_URL_BSC is the bscscan API endpoint as per their [details](https://docs.bscscan.com/getting-started/endpoint-urls).
 
 - TOAD_FIRST_BLOCK_BSC is the block when the toad.network ERC20 token contract was deployed.
 

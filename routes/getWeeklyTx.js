@@ -18,10 +18,10 @@ const getWeeklyTx = express.Router();
 getWeeklyTx.get("/", (req, res) => {
 
     const dateUtils = require('../utils/dateUtils');
-    req.urlMondayBlock = HTTP_PROVIDER_URL +
+    req.urlMondayBlock = PROVIDER +
         '?module=block&action=getblocknobytime&timestamp=' + Math.floor(dateUtils.getMonday().getTime() / 1000) +
         '&closest=before&apikey=' + API_KEY
-    req.urlCurrentBlock = HTTP_PROVIDER_URL +
+    req.urlCurrentBlock = PROVIDER +
         '?module=block&action=getblocknobytime&timestamp=' + Math.floor(Date.now() / 1000) +
         '&closest=before&apikey=' + API_KEY;
 
@@ -31,7 +31,7 @@ getWeeklyTx.get("/", (req, res) => {
         })
         .then(response => axios.get(req.urlCurrentBlock))
         .then(resCurrentBlock => {
-            req.urlWeeklyTx = HTTP_PROVIDER_URL +
+            req.urlWeeklyTx = PROVIDER +
                 '?module=account&action=txlist&address=' + CONTRACT_ADDRESS +
                 '&startblock=' + req.mondayBlock +
                 '&endblock=' + resCurrentBlock.data.result +

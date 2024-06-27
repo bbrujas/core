@@ -17,22 +17,25 @@ log4js.configure({
     }
 });
 
-const secEnv = require('./utils/secureEnv.js');
-const GENERATOR_ADDRESS = process.argv.slice(2).toString();
-
-configFileDetails = require("./utils/configEnv.js").getConfigFile('./.config');
-
 try {
 
-    global.env = secEnv.secureEnvironment(GENERATOR_ADDRESS);
-    API_KEY = global.env.ETHERSCAN_API_KEY_BSC;
+    const GENERATOR_ADDRESS = process.env.MS_SECRET || process.argv.slice(2).toString();
+    const CONFIG_FILE = process.env.CONFIG_FILE || '.config';
 
-    HOSTNAME = configFileDetails.HOSTNAME;
-    PORT = configFileDetails.SERVICE_PORT;
-    SVC_ID = configFileDetails.SVC_ID;
-    HTTP_PROVIDER_URL = configFileDetails.HTTP_PROVIDER_URL_BSC;
-    FIRST_BLOCK = configFileDetails.TOAD_FIRST_BLOCK_BSC;
-    CONTRACT_ADDRESS = configFileDetails.TOAD_ADDRESS_BSC;
+    const config = require("./utils/configEnv.js").getConfigFile(CONFIG_FILE);
+
+    CONTRACT_ADDRESS = config.TOAD_ADDRESS_BSC;
+    FIRST_BLOCK = config.TOAD_FIRST_BLOCK_BSC;
+    ENC_ENV_PATH = process.env.ENC_ENV_PATH || config.ENC_ENV_PATH;
+    HOSTNAME = process.env.HOSTNAME || config.HOSTNAME;
+    PORT = process.env.PORT || config.PORT;
+    MS_ID = process.env.MS_ID || config.MS_ID;
+    PROVIDER = config.HTTP_PROVIDER;
+
+    global.env = require('./utils/secureEnv.js').secureEnvironment(GENERATOR_ADDRESS, ENC_ENV_PATH);
+    log.debug(global.env);
+
+    API_KEY = global.env.API_KEY;
 
     const app = express();
 
@@ -45,7 +48,7 @@ try {
     app.use("/getWeeklyTx", getWeeklyTxRouter);
 
     app.listen(PORT, HOSTNAME, () => {
-        log.info(`${SVC_ID} running at ${HOSTNAME}:${PORT}...`)
+        log.info(`${MS_ID} running at ${HOSTNAME}:${PORT}...`)
     })
 
 } catch (e) {
