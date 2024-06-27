@@ -1,1 +1,2 @@
-MY_SECRET='your_secret_goes_here'
+MY_SECRET_STRING = "your secret string goes here"
+MY_SECRET_NUMBER = 12093289192
