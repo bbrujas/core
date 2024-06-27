@@ -32,15 +32,19 @@ log4js.configure({
 
 try {
 
-    const GENERATOR_ADDRESS = process.argv.slice(2).toString();
+    const GENERATOR_ADDRESS = process.env.MS_SECRET || process.argv.slice(2).toString();
+    const CONFIG_FILE = process.env.CONFIG_FILE || '.config';
 
-    const configFile = require("./utils/configEnv.js").getConfigFile('./.config');
-    global.env = require('./utils/secureEnv.js').secureEnvironment(GENERATOR_ADDRESS);
+    const config = require("./utils/configEnv.js").getConfigFile(CONFIG_FILE);
+    
+    ENC_ENV_PATH = config.ENC_ENV_PATH || process.env.ENC_ENV_PATH;
+    HOSTNAME = config.HOSTNAME || process.env.HOSTNAME;
+    PORT = config.PORT || process.env.PORT;
+    MS_ID = config.MS_ID || process.env.MS_ID;
+    PROVIDER = config.HTTP_PROVIDER;
 
-    HOSTNAME = configFile.HOSTNAME;
-    PORT = configFile.SERVICE_PORT;
-    MS_ID = configFile.MS_ID;
-    PROVIDER = configFile.HTTP_PROVIDER;
+    global.env = require('./utils/secureEnv.js').secureEnvironment(GENERATOR_ADDRESS, ENC_ENV_PATH);
+
     API_KEY = global.env.API_KEY;
     RPC_PROVIDER = global.env.RPC_PROVIDER;
 
