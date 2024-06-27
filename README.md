@@ -26,6 +26,7 @@ It services the following resources:
 - **/getMonitored**: Returns a list with the tokens provided in the set of the config file, sorted by market cap.
 - **/getMap**: Returns a map with the more relevant details of the tokens specified in the config file.
 - **/getPriceUSD**: Returns the price in USD for the token symbol passed as parameter.
+- **/getQuotes**: Returns the latest quotes in USD.
 
 > @dev: there's an additional [cmc.postman_collection.json](./cmc.postman_collection.json) file that contains a PostMan collection set with the corresponding resources to test.
 
@@ -41,14 +42,25 @@ The MS relies on two different files:
 Default details for config file are as follows:
 
 ```toml
-HOSTNAME="127.0.0.1"
-SERVICE_PORT=8080
 COIN_LIST=["BTC","ETH"]
+ENC_ENV_PATH='.env.enc'
+HOSTNAME='localhost'
+HTTP_PROVIDER='https://pro-api.coinmarketcap.com'
+MS_ID='cmc'
+PORT=8080
 ```
 
 where:
 
+- COIN_LIST is a map with all the coins you want to monitor.
+
+- ENC_ENV_PATH defines the path and filename of the encrypted environment. Read [here](#secure-your-environment) for more details.
+
 - HOSTNAME will define the IP address (or hostname if you enable any form of naming resolution) your MS will be publised at.
+
+- HTTP_PROVIDER is the URL for the CoinMarketCap api endpoint.
+
+- MS_ID= is an string representing the name you use to identify the running instance of the Microservice
 
 - PORT will specify which port your MS will be listening to.
 
