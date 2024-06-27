@@ -41,27 +41,32 @@ It services the following resources:
 Default details for config file are as follows:
 
 ```toml
-HOSTNAME="127.0.0.1"
-SERVICE_PORT=8080
-SVC_ID="tcms"
 CHURCH_ADDRESS='0xBa1CEd604cc1c99b1d30BCdB6941da2c23caFC86'
-HTTP_PROVIDER_URL_BSC="https://api.bscscan.com/api"
 CHURCH_FIRST_BLOCK=6542468
+ENC_ENV_PATH='.env.enc'
+HOSTNAME="localhost"
+HTTP_PROVIDER="https://api.bscscan.com/api"
+MS_ID="tcms"
+PORT=8080
 ```
 
 where:
 
-- HOSTNAME will define the IP address (or hostname if you enable any form of naming resolution) your MS will be publised at.
-
-- PORT will specify which port your MS will be listening to.
-
-- SVC_ID is a string used to identify the MS
 
 - CHURCH_ADDRESS is the BSCScan address of the toad.network church address.
 
-- HTTP_PROVIDER_URL_BSC is the bscscan API endpoint as per their [details](https://docs.bscscan.com/getting-started/endpoint-urls).
-
 - CHURCH_FIRST_BLOCK is the block when the toad.network church contract was deployed.
+
+- ENC_ENV_PATH is the path to your encrypted environment file, check [here](#secure-your-environment) for more details.
+
+- HOSTNAME will define the IP address (or hostname if you enable any form of naming resolution) your MS will be publised at.
+
+- HTTP_PROVIDER is the bscscan API endpoint as per their [details](https://docs.bscscan.com/getting-started/endpoint-urls).
+
+- MS_ID is a string used to identify the MS
+
+- PORT will specify which port your MS will be listening to.
+
 
 ### environment file
 

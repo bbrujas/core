@@ -16,10 +16,10 @@ const getWeeklyPlayersRoute = express.Router();
 
 getWeeklyPlayersRoute.get("/", (req, res) => {
 
-    req.urlMondayBlock = HTTP_PROVIDER_URL +
+    req.urlMondayBlock = PROVIDER +
         '?module=block&action=getblocknobytime&timestamp=' + Math.floor(require('../utils/dateUtils').getMonday().getTime() / 1000) +
         '&closest=before&apikey=' + API_KEY
-    req.urlCurrentBlock = HTTP_PROVIDER_URL +
+    req.urlCurrentBlock = PROVIDER +
         '?module=block&action=getblocknobytime&timestamp=' + Math.floor(Date.now() / 1000) +
         '&closest=before&apikey=' + API_KEY;
 
@@ -29,7 +29,7 @@ getWeeklyPlayersRoute.get("/", (req, res) => {
         })
         .then(response => axios.get(req.urlCurrentBlock))
         .then(resCurrentBlock => {
-            req.urlWeeklyPraises = HTTP_PROVIDER_URL +
+            req.urlWeeklyPraises = PROVIDER +
             '?module=account&action=txlist&address=' + CONTRACT_ADDRESS +
             '&startblock=' + req.mondayBlock +
             '&endblock=' + resCurrentBlock.data.result +

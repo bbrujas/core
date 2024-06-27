@@ -7,6 +7,26 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.0.1] - 2024-06-27
+
+### Added
+
+- Added Path to secure-env
+
+### Fixed
+
+- 
+
+### Changed
+
+- Configuration loading updated
+
+- Some variables refactoring.
+
+### Removed
+
+- 
+
 ## [1.0.0] - 2023-07-19
 
 ### Added
@@ -25,7 +45,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - 
 
-## [0.0.1] - historical changes
+## [1.0.1] - historical changes
 
+- **2024/06/27** - Added Path to secure-env, patched configuration loading.
 - **2023/07/19** - *tcms* branch initialisation*.
 - **2023/05/26** - Repository creation.

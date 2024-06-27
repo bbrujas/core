@@ -16,10 +16,10 @@ const getAllPraisesRoute = express.Router();
 
 getAllPraisesRoute.get("/", (req, res) => {
 
-    axios.get(HTTP_PROVIDER_URL +
+    axios.get(PROVIDER +
             '?module=block&action=getblocknobytime&timestamp=' + Math.floor(Date.now() / 1000) +
             '&closest=before&apikey=' + API_KEY)
-        .then(resCurrentBlock => axios.get(HTTP_PROVIDER_URL +
+        .then(resCurrentBlock => axios.get(PROVIDER +
             '?module=account&action=txlist&address=' + CONTRACT_ADDRESS +
             '&startblock=' + FIRST_BLOCK +
             '&endblock=' + resCurrentBlock.data.result +
