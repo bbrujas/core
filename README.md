@@ -38,8 +38,11 @@ Default details for config file are as follows:
 ```toml
 ENC_ENV_PATH='.env.enc'
 HOSTNAME='localhost'
-MS_ID='dev-branch'
+MS_ID='padswap'
+PATH_JSON_ABI_FACTORY='./contracts/abis/PadFactory.json'
+PATH_JSON_ABI_PADPAIR='./contracts/abis/PadPair.json'
 PORT=8080
+SMART_CONTRACT='your_factory_smart_contract'
 ```
 
 where:
@@ -50,15 +53,22 @@ where:
 
 - MS_ID is the value you use to identify your MS instance.
 
+- PATH_JSON_ABI_FACTORY will specify the path to the Factory JSON.
+
+- PATH_JSON_ABI_PADPAIR will specify the path to the Pad Pair JSON.
+
 - PORT will specify which port your MS will be listening to.
+
+- SMART_CONTRACT will specify the address of the factory.
+
 
 ### environment file
 
 The MS core does not require any specific encrypted environment secret. Any escret that needs to be included should be passed in the TOML format, as in the following example:
 
 ```toml
-MY_SECRET_STRING = "your secret string goes here"
-MY_SECRET_NUMBER = 12093289192
+RPC_PROVIDER = "your_rpc_provider_goes_here"
+HTTP_PROVIDER = "your_http_provider_goes_here"
 ```
 
 ### Dependencies
@@ -66,12 +76,18 @@ MY_SECRET_NUMBER = 12093289192
 ```json
   "dependencies": {
     "axios": "^1.3.4",
+    "dompurify": "^3.0.1",
+    "ethers": "5.7",
     "express": "^4.18.2",
     "fs-extra": "^10.1.0",
+    "jsdom": "^21.1.1",
     "log4js": "^6.4.1",
+    "marked": "^4.2.12",
     "npm-run": "^5.0.1",
     "path": "^0.12.7",
     "secure-env": "1.2.0",
+    "serve-favicon": "^2.5.0",
+    "shortid": "^2.2.16",
     "toml": "^3.0.0"
   },
   "devDependencies": {
@@ -100,6 +116,14 @@ cd core
 ```sh
 tree -a ./
 ./
+├── CHANGELOG.md
+├── client
+│   ├── favicon.png
+│   └── index.html
+├── contracts
+│   └── abis
+├── env
+├── LICENSE
 ├── routes
 │   ├── about.js
 │   ├── changelog.js
@@ -107,14 +131,34 @@ tree -a ./
 ├── utils
 │   ├── configEnv.js
 │   └── secureEnv.js
-├── .config
-├── CHANGELOG.md
-├── env
-├── LICENSE
 ├── package.json
 ├── README.md
+├── routes
+│   ├── about.js
+│   ├── changelog.js
+│   ├── factoryPairByAddresses.js
+│   ├── factoryPairById.js
+│   ├── factoryPairs.js
+│   ├── pairAllowance.js
+│   ├── pairBalanceOf.js
+│   ├── pairDecimals.js
+│   ├── pairFactory.js
+│   ├── pairKLast.js
+│   ├── pairName.js
+│   ├── pairNonces.js
+│   ├── pairPrice0CumulativeLast.js
+│   ├── pairPrice1CumulativeLast.js
+│   ├── pairReserves.js
+│   ├── pairSymbol.js
+│   ├── pairToken0.js
+│   ├── pairToken1.js
+│   ├── pairTotalSupply.js
+│   └── readme.js
 ├── server.js
-└── TODO.md
+├── TODO.md
+└── utils
+    ├── configEnv.js
+    └── secureEnv.js
 ```
 > @reader: if you cloned the repo, then you should also see git related artifacts, like *.git* folder and *.gitignore* file. 
 
@@ -168,6 +212,10 @@ Secure-env :  WARNING Make sure to delete ".env" for production use.
 4. Remember to **delete** your original .env file when deploying on PRODUCTION environments. :)  
 
 ## Other resources
+
+- [Express JS app locals](https://expressjs.com/en/api.html#app.locals)
+
+- [ethersJS 5 Doc](https://docs.ethers.org/v5/).
 
 - [Building NodeJS microservices](https://blog.logrocket.com/building-microservices-node-js/).
 

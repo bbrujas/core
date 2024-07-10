@@ -1,2 +1,2 @@
-MY_SECRET_STRING = "your secret string goes here"
-MY_SECRET_NUMBER = 12093289192
+RPC_PROVIDER = "your_rpc_provider_goes_here"
+HTTP_PROVIDER = "your_http_provider_goes_here"

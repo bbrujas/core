@@ -7,6 +7,28 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.0.2] - 2024-07-11
+
+### Added
+
+- Several routes to handle pad pairs and factory integration through HTTP provider.
+
+- ethers integration.
+
+### Fixed
+
+- 
+
+### Changed
+
+- Configuration loading has been updated to allow unsetted variables processing and default values.
+
+- Updated environment variables loading to become more "Express" compatible.
+
+### Removed
+
+- 
+
 ## [1.0.1] - 2024-06-27
 
 ### Added
